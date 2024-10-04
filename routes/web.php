@@ -16,3 +16,4 @@ use App\Http\Controllers\PostController;
 
 
 Route::get('/', [PostController::class, 'index']);
+//Route::get('/long_goal', [PostController::class, 'show_long_goal']);
