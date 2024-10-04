@@ -7,39 +7,36 @@
         <title>Top Page</title>
     </head>
     <body>
-
-    <header>
-        <h1 class="headline">
-            <div class='post'>
-                <a>Your Name:{{$users->name}}</a>
+        <header>
+            <h1 class="headline">
+                <div class='post'>
+                    <a>Name:{{$users->user_name}}</a>
+                </div>
+            </h1>
+            <div class="navigation">
+                <nav>
+                    <ul>
+                        <li>Make New Project</li>
+                        <li>Notes</li>
+                        <li>Achivements</li>
+                    </ul>
+                </nav>
             </div>
-        </h1>
-        <div class="wrapper">
-            <div class="one">Make New Project</div>
-            <div class="one">Notes</div>
-            <div class="one">Achievements</div>
-        </div>
+        </header>
 
-        <ul class="nav-list">
-            <li class="nav-list-item">
-              <a>Make New Project</a>
-            </li>
-            <li class="nav-list-item">Notes</li>
-            <li class="nav-list-item">Achievements</li>
-          </ul>
-    
-    
-    </header>
-
-    <article>
-        <div class="content">メインコンテンツ</div>
-        <div class="side">
-            <h2>プロジェクト1:</h2>
-            <p>進捗度：</p>
-            <p>サイドバー</p>
-        </div> 
-        <div class="subcontent">サブコンテンツ</div>
-    </article>
+        <article>
+            <div class="content">カレンダー</div>
+            <div class="sides">
+                @foreach ($lgoals as $lgoal)
+                    <div class="goals">
+                    <h2 class="long_goals">{{ $lgoal->goal_name }}</h2>
+                    <p>{{ $lgoal->goal_description }}</p>
+                    <p>進捗度：</p>
+                    </div>
+                @endforeach
+            </div> 
+            <div class="subcontent">To Do List</div>
+        </article>
     
     </body>
 </html>

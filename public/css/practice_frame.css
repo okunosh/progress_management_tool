@@ -11,36 +11,30 @@
     text-align: left;
     font-size: 32px;
   }
-  .wrapper{
-    width:640px;
+  header .navigation{
+    color: aquamarine;
+  }
+  nav{
+    position:absolute;
+    top: 50px;
+    left:0;
+    width:100%;
+  }
+  nav ul{
+    font-size: 1.2rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: auto;
-    font-size:1.5rem;
-}
-.one{
-    box-sizing: border-box;
-    border:2px solid #999;
-    width:200px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-  .nav-list {
+  }
+  nav li{
     text-align: center;
-    padding: 10px 0;
-    margin: 0 auto;
+    padding:10px 0;
+    color: brown;
   }
-  .nav-list-item {
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-  }
+
+
   body {
     font-family:'Noto Sans JP',sans-serif;
     background-color:#f6f5f4;
+    box-sizing: border-box;
  }
 
  article {
