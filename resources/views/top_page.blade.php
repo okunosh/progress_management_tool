@@ -8,11 +8,13 @@
     </head>
     <body>
         <header>
+            {{--
             <h1 class="headline">
                 <div class='post'>
                     <a>Name:{{$users->user_name}}</a>
                 </div>
             </h1>
+            --}}
             <div class="navigation">
                 <nav>
                     <ul>
@@ -25,7 +27,7 @@
         </header>
 
         <article>
-            <div class="content">カレンダー</div>
+            <div class="content">Calendar</div>
             <div class="sides">
                 @foreach ($lgoals as $lgoal)
                     <div class="goals">
