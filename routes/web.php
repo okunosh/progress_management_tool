@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,30 @@ use App\Http\Controllers\PostController;
 |
 */
 
+/*
+Route::get('/', function () {
+    return view('welcome');
+});
+*/
 
-Route::get('/', [PostController::class, 'index']);
-//Route::get('/long_goal', [PostController::class, 'show_long_goal']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('index'); 
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile_show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+/** 
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/', [PostController::class, 'index'])->name('index');  
+});
+*/
+require __DIR__.'/auth.php';
