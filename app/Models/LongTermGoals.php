@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LongTermGoals extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'long_term_goal_id';
 }
