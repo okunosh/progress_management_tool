@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            
             $table->bigIncrements('user_id'); 
             $table->string('user_name');
             $table->string('email')->unique();
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->integer('age');
             $table->boolean('visibility_setting')->default(true);
             $table->timestamps();
+            
         });
     }
 
@@ -28,5 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('users');
     }
 };

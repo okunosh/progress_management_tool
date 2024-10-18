@@ -21,6 +21,10 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('Top Page') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('goal')" :active="request()->routeIs('goal')">
+                        {{ __('Goals') }}
+
+                    </x-nav-link>
                 </div>
             </div>
 

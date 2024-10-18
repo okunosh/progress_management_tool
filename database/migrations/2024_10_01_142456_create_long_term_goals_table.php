@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('long_term_goals', function (Blueprint $table) {
             $table->id('long_term_goal_id');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained('users', 'user_id');
             $table->string('goal_name');
             $table->text('goal_description')->nullable();
             $table->date('start_date');
