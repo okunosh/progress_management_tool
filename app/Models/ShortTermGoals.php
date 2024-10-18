@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LongTermGoals extends Model
+class ShortTermGoals extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'long_term_goal_id';
+    protected $primaryKey = 'short_term_goal_id';
 
     protected $fillable = [
-        'goal_name',
-        'goal_description',
-        'start_date',
-        'end_date',
+        'short_term_goal',
+        'short_term_goal_description',
+        'planned_start_date',
+        'planned_end_date',
         'user_id',
     ];
 

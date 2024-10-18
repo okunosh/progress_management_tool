@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Long_term_goals_Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,16 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('index'); 
+    Route::get('/goal', [Long_term_goals_Controller::class, 'index'])->name('goal');
+    Route::get('/goal/create', [Long_term_goals_Controller::class, 'create']);
+
+    Route::post('/goal/create', [Long_term_goals_Controller::class, 'store']);
+
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile_show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 });
 
 /** 

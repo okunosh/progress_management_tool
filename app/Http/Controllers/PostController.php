@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\LongTermGoals;
+use App\Models\ShortTermGoals;
 
 class PostController extends Controller
 {
@@ -18,6 +19,17 @@ class PostController extends Controller
             'users' => $user,
             'lgoals' => $lgoal
         ]);
+    }
+    public function create()
+    {
+        return view('create');
+    }
+
+    public function store(Request $request, Post $post)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts' . $post->id);
     }
     
     /*
