@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ShortTermGoals;
 
 class LongTermGoals extends Model
 {
@@ -12,6 +13,7 @@ class LongTermGoals extends Model
     protected $primaryKey = 'long_term_goal_id';
 
     protected $fillable = [
+        'long_term_goal_id',
         'goal_name',
         'goal_description',
         'start_date',
@@ -19,8 +21,13 @@ class LongTermGoals extends Model
         'user_id',
     ];
 
-    public function user()
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function shortTermGoals()
+{
+    return $this->hasMany(ShortTermGoals::class, 'long_term_goal_id', 'long_term_goal_id');
+}
 }
