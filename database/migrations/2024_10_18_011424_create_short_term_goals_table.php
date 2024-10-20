@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::dropIfExists('short_term_goals');
-        
+
         Schema::create('short_term_goals', function (Blueprint $table) {
             $table->id('short_term_goal_id');
             $table->foreignId('long_term_goal_id')->constrained('long_term_goals', 'long_term_goal_id');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('short_term_goal_description')->nullable();
             $table->date('planned_start_date');
             $table->date('planned_end_date');
-            $table->decimal('progress_status', 4, 1);
+            $table->decimal('progress_status', 4, 1)->default(0);
 
         });
     }

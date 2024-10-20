@@ -37,11 +37,13 @@
             <h2>you are : {{ Auth::user()->user_name }}</h2>
                 <div class="content">Calendar</div>
                 <div class="sides">
+                    <p>--------------</p>
                     @foreach ($lgoals as $lgoal)
                         <div class="goals">
                         <h2 class="long_goals">{{ $lgoal->goal_name }}</h2>
                         <p>{{ $lgoal->goal_description }}</p>
                         <p>進捗度：</p>
+                        <p>--------------</p>
                         </div>
                     @endforeach
                 </div> 
