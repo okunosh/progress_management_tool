@@ -28,6 +28,11 @@ class ShortTermGoals extends Model
 
     public function longTermGoal()
     {
-        return $this->belongsTo(LongTermGoals::class, 'long_term_goal_id', 'long_term_goalid');
+        return $this->belongsTo(LongTermGoals::class, 'long_term_goal_id', 'long_term_goal_id');
+    }
+
+    public function task()
+    {
+        return $this->hasMany(Task::class, 'task_id', 'task_id');
     }
 }

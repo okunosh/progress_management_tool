@@ -13,7 +13,6 @@ class LongTermGoals extends Model
     protected $primaryKey = 'long_term_goal_id';
 
     protected $fillable = [
-        'long_term_goal_id',
         'goal_name',
         'goal_description',
         'start_date',

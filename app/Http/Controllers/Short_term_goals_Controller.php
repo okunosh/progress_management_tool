@@ -34,6 +34,15 @@ class Short_term_goals_Controller extends Controller
         ]);
     }
 
+    public function show(LongTermGoals $long_term_goal, ShortTermGoals $short_term_goal)
+    {
+        //dd($short_term_goal);
+        return view('goals.show_target')->with([
+            'long_term_goal' => $long_term_goal,
+            'short_term_goal' => $short_term_goal,
+        ]);
+    }
+
     public function store(Request $request, ShortTermGoals $short_term_goal, LongTermGoals $long_term_goal)
     {
         $input = $request['short_goal'];

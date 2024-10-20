@@ -5,6 +5,8 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Long_term_goals_Controller;
 use App\Http\Controllers\Short_term_goals_Controller;
+use App\Http\Controllers\TaskController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/goal/{long_term_goal}/short_term_goal', [Short_term_goals_Controller::class, 'index'])->name('short_goal');
     Route::get('/goal/{long_term_goal}/short_term_goal/create_short_term_goal', [Short_term_goals_Controller::class, 'create']);
     Route::post('/goal/{long_term_goal}/short_term_goal/create_short_term_goal', [Short_term_goals_Controller::class, 'store']);
+    //short_term_goalの詳細画面に遷移
+    Route::get('/goal/{long_term_goal}/short_term_goal/{short_term_goal}', [Short_term_goals_Controller::class, 'show']);
+
+    Route::get('/goal/{long_term_goal}/short_term_goal/{short_term_goal}/task', [TaskController::class, 'index']);
+
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile_show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
