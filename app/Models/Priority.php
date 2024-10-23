@@ -9,6 +9,7 @@ use App\Models\Task;
 class Priority extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'priority_id';
 
     protected $fillable = [
         'task_id',

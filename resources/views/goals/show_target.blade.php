@@ -6,7 +6,7 @@
     <body>
         <div>
             <!--task作成画面へのリンク-->
-            <a href="{{ url('/goal/' . $long_term_goal->long_term_goal_id. '/'. $short_term_goal->short_term_goal_id. '/create_task') }}">create task</a>
+            <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">create task</a>
         </div>
 
         
@@ -25,12 +25,27 @@
                     <h2 class="task">{{ $task->task_name }}</h2>
                     <p>{{ $task->task_description }}</p>
                     <p>進捗度：</p>
+                    <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" id="form_{{ $task->task_id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="task_id" value="{{ $task->task_id }}">
+                        <button type="button" onclick="deleteTask({{ $task->task_id }})">delete</button> 
+                    </form>
                     <p>--------------------</p>
 
-                    </div>
+                </div>
             @endforeach
 
         </div>
+        <script>
+            function deleteTask(id) {
+                'use strict'
+
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 
 </x-app-layout>
