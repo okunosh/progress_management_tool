@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LongTermGoals;
 use App\Models\ShortTermGoals;
+use App\Models\Task;
 
 
 class Short_term_goals_Controller extends Controller
@@ -21,7 +22,6 @@ class Short_term_goals_Controller extends Controller
 
     public function create(LongTermGoals $long_term_goal)
     {
-
         $short_term_goal = $long_term_goal->shortTermGoals;//model名
         //dd($short_term_goals);
         //$long_term_goals = LongTermGoals::first(); //first()は違う。
@@ -34,12 +34,18 @@ class Short_term_goals_Controller extends Controller
         ]);
     }
 
-    public function show(LongTermGoals $long_term_goal, ShortTermGoals $short_term_goal)
+    public function show(LongTermGoals $long_term_goal, ShortTermGoals $short_term_goal, Task $tasks)
     {
-        //dd($short_term_goal);
+        //$tasks = $short_term_goal->tasks; 
+        //$tasks = $tasks->short_term_goal_id; 
+        
+        $tasks = Task::where('short_term_goal_id', $short_term_goal->short_term_goal_id)->get();
+        //dd($short_term_goal->short_term_goal_id);
+        //dd($tasks);
         return view('goals.show_target')->with([
             'long_term_goal' => $long_term_goal,
             'short_term_goal' => $short_term_goal,
+            'tasks' => $tasks,
         ]);
     }
 
@@ -50,7 +56,7 @@ class Short_term_goals_Controller extends Controller
         $input['long_term_goal_id'] = $long_term_goal ->long_term_goal_id;
         $short_term_goal->fill($input)->save();
 
-        return redirect('/goal/'.$long_term_goal->long_term_goal_id.'/short_term_goal');
+        return redirect('/goal/'.$long_term_goal->long_term_goal_id);
     }
 
 }

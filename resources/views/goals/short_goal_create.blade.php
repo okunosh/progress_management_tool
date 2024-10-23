@@ -3,7 +3,7 @@
         Short Goal
     </x-slot>
     <div>
-        <form action="/goal/{{ $long_term_goal->long_term_goal_id }}/short_term_goal/create_short_term_goal" method="POST">
+        <form action="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal" method="POST">
             @csrf
             <div>
                 name
