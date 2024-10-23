@@ -33,6 +33,6 @@ class ShortTermGoals extends Model
 
     public function task()
     {
-        return $this->hasMany(Task::class, 'task_id', 'task_id');
+        return $this->hasMany(Task::class, 'short_term_goal_id', 'short_term_goal_id');
     }
 }

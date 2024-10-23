@@ -33,28 +33,33 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [PostController::class, 'index'])->name('index'); 
+    Route::get('/', [PostController::class, 'index'])->name('index');
+});
 
-    Route::get('/goal', [Long_term_goals_Controller::class, 'index'])->name('goal');
-    Route::get('/goal/create', [Long_term_goals_Controller::class, 'create']);
-    Route::post('/goal/create', [Long_term_goals_Controller::class, 'store']);
-    //long_term_goalの詳細画面に遷移
-    Route::get('/goal/{long_term_goal}', [Long_term_goals_Controller::class, 'show']);
+Route::controller(Long_term_goals_Controller::class)->middleware(['auth'])->group(function(){
+    Route::get('/goal', 'index')->name('goal');
+    Route::get('/goal/create', 'create');
+    Route::post('/goal/create', 'store');
+    Route::get('/goal/{long_term_goal}', 'show');
+});
 
-    Route::get('/goal/{long_term_goal}/short_term_goal', [Short_term_goals_Controller::class, 'index'])->name('short_goal');
-    Route::get('/goal/{long_term_goal}/short_term_goal/create_short_term_goal', [Short_term_goals_Controller::class, 'create']);
-    Route::post('/goal/{long_term_goal}/short_term_goal/create_short_term_goal', [Short_term_goals_Controller::class, 'store']);
-    //short_term_goalの詳細画面に遷移
-    Route::get('/goal/{long_term_goal}/short_term_goal/{short_term_goal}', [Short_term_goals_Controller::class, 'show']);
+Route::controller(Short_term_goals_Controller::class)->middleware(['auth'])->group(function(){
+    Route::get('/goal/{long_term_goal}/create_short_term_goal', 'create');
+    Route::post('/goal/{long_term_goal}/create_short_term_goal', 'store');
+    Route::get('/goal/{long_term_goal}/{short_term_goal}', 'show');   
+});
 
-    Route::get('/goal/{long_term_goal}/short_term_goal/{short_term_goal}/task', [TaskController::class, 'index']);
+Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
+    Route::get('/goal/{long_term_goal}/{short_term_goal}/create_task', 'create');
+    Route::post('/goal/{long_term_goal}/{short_term_goal}/create_task', 'store');
+    Route::delete('/goal/{long_term_goal}/{short_term_goal}', 'delete');
+});
 
-
+Route::middleware('auth')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile_show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
 });
 
 /** 

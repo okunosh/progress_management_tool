@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LongTermGoals;
+use App\Models\ShortTermGoals;
 use Illuminate\Support\Facades\Auth;
 
 class Long_term_goals_Controller extends Controller
@@ -22,9 +23,14 @@ class Long_term_goals_Controller extends Controller
         return view('goals.long_goal_create');
     }
 
-    public function show(LongTermGoals $long_term_goal)
+    public function show(LongTermGoals $long_term_goal, ShortTermGoals $short_term_goal)
     {
-        return view('goals.show')->with(['long_term_goal' => $long_term_goal]);
+        $short_term_goal = $long_term_goal->shortTermGoals;
+        //dd($short_term_goal);
+        return view('goals.show')->with([
+            'long_term_goal' => $long_term_goal,
+            'short_term_goal' => $short_term_goal
+    ]);
     }
     public function store(Request $request, LongTermGoals $long_term_goal)
     {
