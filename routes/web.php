@@ -52,6 +52,7 @@ Route::controller(Short_term_goals_Controller::class)->middleware(['auth'])->gro
 Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
     Route::get('/goal/{long_term_goal}/{short_term_goal}/create_task', 'create');
     Route::post('/goal/{long_term_goal}/{short_term_goal}/create_task', 'store');
+    Route::get('/goal/{long_term_goal}/{short_term_goal}/finished', 'finish');
     Route::delete('/goal/{long_term_goal}/{short_term_goal}', 'delete');
 });
 

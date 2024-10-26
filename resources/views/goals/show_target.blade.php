@@ -16,6 +16,8 @@
             <p>end:{{ $short_term_goal->planned_end_date }}</p>
             <p>-------------------------------------------</p>
             <p>タスク一覧</p>
+            <!-- finished tasks一覧へのリンク -->
+             <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">finished task</a>
             <p>-------------------------------------------</p>
 
 
