@@ -28,7 +28,7 @@
             </div>
             
             <div>
-                status
+                status 不要
                 <select name="task[status]">
                     <option value="pending">pending</option>
                     <option value="in progress">in progress</option>

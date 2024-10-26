@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('task_name');
             $table->string('task_description')->nullable();
             $table->date('planned_date');
-            $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');//
             $table->date('due_date')->nullable();
             $table->enum('priority_level', ['high','medium', 'low'])->default('medium');
         });
