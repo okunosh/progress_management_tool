@@ -53,6 +53,7 @@ Route::controller(TaskController::class)->middleware(['auth'])->group(function()
     Route::get('/goal/{long_term_goal}/{short_term_goal}/create_task', 'create');
     Route::post('/goal/{long_term_goal}/{short_term_goal}/create_task', 'store');
     Route::get('/goal/{long_term_goal}/{short_term_goal}/finished', 'finish');
+    Route::patch('/goal/{long_term_goal}/{short_term_goal}', 'updateStatus')->name('tasks.updateStatus');
     Route::delete('/goal/{long_term_goal}/{short_term_goal}', 'delete');
 });
 

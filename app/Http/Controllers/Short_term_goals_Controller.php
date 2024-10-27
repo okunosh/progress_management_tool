@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\LongTermGoals;
 use App\Models\ShortTermGoals;
 use App\Models\Task;
-
+use App\Models\TaskStatusCategory;
 
 class Short_term_goals_Controller extends Controller
 {
@@ -39,13 +39,18 @@ class Short_term_goals_Controller extends Controller
         //$tasks = $short_term_goal->tasks; 
         //$tasks = $tasks->short_term_goal_id; 
         
-        $tasks = Task::where('short_term_goal_id', $short_term_goal->short_term_goal_id)->get();
+        $tasks = Task::where('short_term_goal_id', $short_term_goal->short_term_goal_id)
+                      ->whereIn('status_category_id', [1,2])
+                      ->with('taskStatusCategory')
+                      ->get();
+        $statusCategories = TaskStatusCategory::all();
         //dd($short_term_goal->short_term_goal_id);
         //dd($tasks);
         return view('goals.show_target')->with([
             'long_term_goal' => $long_term_goal,
             'short_term_goal' => $short_term_goal,
             'tasks' => $tasks,
+            'statusCategories' => $statusCategories,
         ]);
     }
 
