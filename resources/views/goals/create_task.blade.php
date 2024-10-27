@@ -26,15 +26,6 @@
                 duedate
                 <input type="date" name="task[due_date]"></input>
             </div>
-            
-            <div>
-                status 不要
-                <select name="task[status]">
-                    <option value="pending">pending</option>
-                    <option value="in progress">in progress</option>
-                    <option value="completed">completed</option>
-                </select>
-            </div>
 
             <div>
                 priority_level

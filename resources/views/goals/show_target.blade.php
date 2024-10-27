@@ -17,7 +17,7 @@
             <p>-------------------------------------------</p>
             <p>タスク一覧</p>
             <!-- finished tasks一覧へのリンク -->
-             <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">finished task</a>
+             <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a>
             <p>-------------------------------------------</p>
 
 
@@ -26,7 +26,27 @@
                 
                     <h2 class="task">{{ $task->task_name }}</h2>
                     <p>{{ $task->task_description }}</p>
-                    <p>進捗度：</p>
+                    <p>予定日：{{ $task->planned_date}}</p>
+                    <p>進捗状況：</p>
+                    <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="task_name" value="{{ $task->task_name }}">
+                        <input type="hidden" name="task_description" value="{{ $task->task_description }}">
+                        <input type="hidden" name="planned_date" value="{{ $task->planned_date }}">
+                        <input type="hidden" name="due_date" value="{{ $task->due_date }}">
+                        <input type="hidden" name="priority_level" value="{{ $task->priority_level }}">
+
+
+                        <select name="status_category_id" onchange="this.form.submit()">
+                            @foreach ($statusCategories as $statusCategory)
+                                <option value="{{ $statusCategory->id }}" {{ $task->status_category_id == $statusCategory->id ? 'selected' : '' }}>
+                                    {{ $statusCategory->status_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
+
                     <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" id="form_{{ $task->task_id }}" method="post">
                         @csrf
                         @method('DELETE')

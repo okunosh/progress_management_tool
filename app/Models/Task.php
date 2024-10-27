@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ShortTermGoals;
 use App\Models\Priority;
+use App\Models\TaskStatusCategory;
 
 
 
@@ -25,7 +26,7 @@ class Task extends Model
         'task_name',
         'task_description',
         'planned_date',
-        'status',
+        'status_category_id',
         'due_date',
         'priority_level',
     ];
@@ -38,6 +39,11 @@ class Task extends Model
     public function priority()
     {
         return $this->hasOne(Priority::class, 'priority_id', 'priority');
+    }
+
+    public function taskStatusCategory()
+    {
+        return $this->belongsTo(TaskStatusCategory::class, 'status_category_id');
     }
 
 }
