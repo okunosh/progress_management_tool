@@ -46,7 +46,6 @@ class TaskController extends Controller
     }
     public function updateStatus(Request $request, Task $task, $long_term_goal_id, $short_term_goal_id)
     {
-        
         $request->validate([
             'status_category_id' => 'required|exists:task_status_categories,id',
         ]);
@@ -68,4 +67,16 @@ class TaskController extends Controller
         //dd($task);
         return redirect('/goal/'.$long_term_goal_id.'/'.$short_term_goal_id);
     }
+
+    // public function share(Task $task)
+    // {
+    //     $shared_tasks = Task::where('status_category_id', 3)
+    //                             ->where('short_term_goal_id', 2)
+    //                             ->get();
+    //     //dd($finished_tasks);
+    //     return view('top_page')->with([
+    //     'shared_tasks'=>$shared_tasks
+    //     ]);
+
+    // }
 }

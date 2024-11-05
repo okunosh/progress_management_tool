@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+<head>
     <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/practice_frame.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Top Page</title>
-    </head>
-
+    <link rel="stylesheet" href="{{ asset('css/practice_frame.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
     <x-app-layout>
         <x-slot name="header">
-            Top Page
+            Create Task
         </x-slot>
-        <body>
-            <!--
-            <header>
-                {{--
-                <h1 class="headline">
-                    <div class='post'>
-                        <a>Name:{{$users->user_name}}</a>
-                    </div>
-                </h1>
-                --}}
-                <div class="navigation">
-                    <nav>
-                        <ul>
-                            <li>Make New Project</li>
-                            <li>Notes</li>
-                            <li>Achivements</li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-            -->
-            
-            <article>
-            <h2>you are : {{ Auth::user()->user_name }}</h2>
-                <div class="content">Calendar</div>
-                <div class="sides">
+
+        <h2>you are : {{ Auth::user()->user_name }}</h2>
+        <article>
+            <div class="content">
+                <h3>Your Goals</h3>
+                <div>
                     <p>--------------</p>
                     @foreach ($lgoals as $lgoal)
                         <div class="goals">
-                        <h2 class="long_goals">{{ $lgoal->goal_name }}</h2>
-                        <p>{{ $lgoal->goal_description }}</p>
-                        <p>進捗度：</p>
-                        <p>--------------</p>
+                            <h2 class="long_goals">{{ $lgoal->goal_name }}</h2>
+                            <p>{{ $lgoal->goal_description }}</p>
+                            <p>進捗度：</p>
+                            <p>--------------</p>
                         </div>
                     @endforeach
-                </div> 
-                <div class="subcontent">To Do List</div>
-            </article>
-        </body>
-    </x-app-layout>
+                </div>
+            </div>
 
-    
+            <div class="sides">
+                <!-- サイドコンテンツ -->
+                 <h1>最近の投稿</h1>
+                 <div>
+                 <p>--------------</p>
+                    @foreach ($tasks as $task)
+                        <div class="tasks">
+                            <h2 class="tasks"></h2>
+                            <p>短期目標：{{$task['short_term_goal_name']}}</p>
+                            <p>タスク：{{ $task['task_name'] }}</p>
+                            <p>投稿者：{{ $task['user_name'] }}</p>
+                            <p>time: {{ $task['updated_at'] }}</p>
+                            
+                            <p>--------------</p>
+                        </div>
+                    @endforeach
+                 </div>
+
+            </div> 
+            <div class="subcontent">
+                <h3>To Do List</h3>
+                <!-- To Do Listの内容 -->
+            </div>
+        </article>
+    </x-app-layout>
+</body>
 </html>

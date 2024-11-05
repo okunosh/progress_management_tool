@@ -47,4 +47,32 @@ class Task extends Model
     {
         return $this->belongsTo(TaskStatusCategory::class, 'status_category_id');
     }
+    public function getByLimit(int $limit=10)
+    {
+        return $this->orderBy('updated_at', 'DESCL')->limit($limit)->get();
+    }
+
+    public function getPaginateByLimit(int $limit=10)
+    {
+        return $this->orderBy('updated_at', 'DESC')->paginate($limit);
+    }
+
+    public function toTaskData()
+{
+    $shortTermGoal = $this->shortTermGoal;
+    $longTermGoal = $shortTermGoal ? $shortTermGoal->longTermGoal : null; // リレーションを取得
+
+    // ユーザー名を取得
+    $userName = $longTermGoal && $longTermGoal->user ? $longTermGoal->user->user_name : 'N/A';
+
+    return [
+        'task_name' => $this->task_name,
+        'updated_at' => $this->updated_at,
+        'planned_date' => $this->planned_date,
+        'short_term_goal_name' => $shortTermGoal ? $shortTermGoal->short_term_goal_name : 'N/A', // 短期目標名
+        'long_term_goal_id' => $longTermGoal ? $longTermGoal->id : null, // 長期目標ID
+        'long_term_goal_name' => $longTermGoal ? $longTermGoal->goal_name : 'N/A', // 長期目標名
+        'user_name' => $userName // ユーザー名
+    ];
+}
 }
