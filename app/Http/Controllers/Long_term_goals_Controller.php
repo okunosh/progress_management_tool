@@ -12,7 +12,6 @@ class Long_term_goals_Controller extends Controller
     public function index()
     {
         $long_term_goals = LongTermGoals::all();
-        //dd($long_term_goal);
         return view('goals.index')->with([
             'long_term_goals' => $long_term_goals
         ]);
@@ -39,6 +38,5 @@ class Long_term_goals_Controller extends Controller
         $long_term_goal->fill($input)->save();
 
         return redirect('/goal');
-
     }
 }

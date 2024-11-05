@@ -3,21 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\LongTermGoals;
 use App\Models\ShortTermGoals;
+use App\Models\Task;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $user = User::first();
-        $lgoal = LongTermGoals::all();
+        // 自分の目標を取得
+        $lgoals = LongTermGoals::where('user_id', Auth::id())->get();
+    
+        // 自分と他人のタスクを取得し、updated_atでソート
+        $tasks = Task::where('status_category_id',3)
+                        ->orderBy('updated_at', 'desc')
+                        ->paginate(5);
+        $taskData = $tasks->map(function ($task) {
+            return $task->toTaskData(); 
+        });
+        ($taskData);
 
         return view('top_page')->with([
-            'users' => $user,
-            'lgoals' => $lgoal
+            'lgoals' => $lgoals,
+            'tasks' => $taskData
         ]);
     }
     public function create()
