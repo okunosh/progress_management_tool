@@ -4,6 +4,12 @@
     </x-slot>
 
     <body>
+         <!-- 成功メッセージ -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div>
             <!--task作成画面へのリンク-->
             <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">create task</a>
@@ -45,6 +51,15 @@
                                 </option>
                             @endforeach
                         </select>
+                    </form>
+
+                    <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}/tasks/{{ $task->task_id }}/notes" method="POST">
+                        @csrf
+                        <div>
+                            メモ
+                            <textarea name="note_content" required></textarea>
+                            <button type="submit">save</button>
+                        </div>
                     </form>
 
                     <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" id="form_{{ $task->task_id }}" method="post">

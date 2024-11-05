@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ShortTermGoals;
 use App\Models\Task;
 use App\Models\TaskStatusCategory;
+use App\Http\Controllers\Note;
+
 
 class TaskController extends Controller
 {
@@ -35,10 +37,11 @@ class TaskController extends Controller
 
     public function finish(Task $task, $long_term_goal_id, $short_term_goal_id)
     { 
-        $finished_tasks = Task::where('status_category_id', 3)
+        $finished_tasks = Task::with('notes')
+                               ->where('status_category_id', 3)
                                ->where('short_term_goal_id', $short_term_goal_id)
                                ->get();
-        //dd($short_term_goal_id);
+        //dd($finished_tasks);
         return view('goals.finished_tasks')->with([
             'finished_tasks'=>$finished_tasks
         ]);
