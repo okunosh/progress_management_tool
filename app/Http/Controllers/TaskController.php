@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\ShortTermGoals;
 use App\Models\Task;
 use App\Models\TaskStatusCategory;
-use App\Http\Controllers\Note;
-
 
 class TaskController extends Controller
 {
@@ -37,8 +35,7 @@ class TaskController extends Controller
 
     public function finish(Task $task, $long_term_goal_id, $short_term_goal_id)
     { 
-        $finished_tasks = Task::with('notes')
-                               ->where('status_category_id', 3)
+        $finished_tasks = Task::where('status_category_id', 3)
                                ->where('short_term_goal_id', $short_term_goal_id)
                                ->get();
         //dd($finished_tasks);
@@ -50,19 +47,19 @@ class TaskController extends Controller
     public function updateStatus(Request $request, Task $task, $long_term_goal_id, $short_term_goal_id)
     {
         
-        //dd($request->task_name);
         $request->validate([
             'status_category_id' => 'required|exists:task_status_categories,id',
         ]);
-
         $task = Task::where('short_term_goal_id', $short_term_goal_id)
-                ->where('task_name', $request->input('task_name'))
-                ->firstOrFail();
+             ->where('task_name', $request->task_name)
+             ->firstOrFail();
+        $task->note = $request->note;
         $task->status_category_id = $request->status_category_id;
         $task->save();
-
-        return redirect()->back()->with('success', 'Task status update successfully');
+        
+        return redirect()->back()->with('success', 'タスクの進捗とメモが更新されました！');
     }
+
 
     public function delete(Request $request, Task $task, $long_term_goal_id, $short_term_goal_id)
     {

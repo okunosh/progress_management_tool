@@ -14,13 +14,11 @@
             <p>{{ $finished_task->task_description }}</p>
             <p>date: {{ $finished_task->planned_date}}</p>
             <h3>ノート</h3>
-            @if($finished_task->notes->isEmpty())
+            @if(is_null($finished_task->note) || $finished_task->note === '')
                 <p>ノートはありません。</p>
             @else
                 <ul>
-                    @foreach ($finished_task->notes as $note)
-                        <li>{{ $note->note_content }}</li> <!-- note_content を表示 -->
-                     @endforeach
+                    <li>{{ $finished_task->note }}</li> <!-- note_content を表示 -->
                 </ul>
             @endif
             <p>---------------------</p>

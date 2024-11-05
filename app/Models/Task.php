@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\ShortTermGoals;
 use App\Models\Priority;
 use App\Models\TaskStatusCategory;
-use App\Models\Note;
 
 
 
@@ -31,6 +30,7 @@ class Task extends Model
         'status_category_id',
         'due_date',
         'priority_level',
+        'note'
     ];
 
     public function shortTermGoal()
@@ -46,10 +46,5 @@ class Task extends Model
     public function taskStatusCategory()
     {
         return $this->belongsTo(TaskStatusCategory::class, 'status_category_id');
-    }
-    
-    public function notes()
-    {
-        return $this->HasMany(Note::class, "task_id");
     }
 }
