@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\ShortTermGoals;
 use App\Models\Priority;
 use App\Models\TaskStatusCategory;
+use App\Models\Note;
+
 
 
 
@@ -45,5 +47,9 @@ class Task extends Model
     {
         return $this->belongsTo(TaskStatusCategory::class, 'status_category_id');
     }
-
+    
+    public function notes()
+    {
+        return $this->HasMany(Note::class, "task_id");
+    }
 }

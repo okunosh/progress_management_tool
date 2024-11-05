@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Long_term_goals_Controller;
 use App\Http\Controllers\Short_term_goals_Controller;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\NoteController;
 
 
 /*
@@ -64,6 +65,10 @@ Route::middleware('auth')->group(function(){
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('auth')->group(function(){
+    Route::post('/goal/{long_term_goal_id}/{short_term_goal_id}/tasks/{task_id}/notes', [NoteController::class, 'store']);
+
+});
 /** 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', [PostController::class, 'index'])->name('index');  
