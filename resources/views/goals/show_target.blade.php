@@ -31,12 +31,15 @@
                 <div class="tasks">
                 
                     <h2 class="task">{{ $task->task_name }}</h2>
+                    <p>ID:{{ $task->task_id }}</p>
                     <p>{{ $task->task_description }}</p>
                     <p>予定日：{{ $task->planned_date}}</p>
                     <p>進捗状況：</p>
                     <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" method="POST">
                         @csrf
                         @method('PATCH')
+                        <input type="hidden" name="short_term_goal_id" value="{{ $short_term_goal->short_term_goal_id }}">
+                        <input type="hidden" name="task_id" value="{{ $task->task_id }}">
                         <input type="hidden" name="task_name" value="{{ $task->task_name }}">
                         <input type="hidden" name="task_description" value="{{ $task->task_description }}">
                         <input type="hidden" name="planned_date" value="{{ $task->planned_date }}">
@@ -44,21 +47,17 @@
                         <input type="hidden" name="priority_level" value="{{ $task->priority_level }}">
 
 
-                        <select name="status_category_id" onchange="this.form.submit()">
+                        <select name="status_category_id">
                             @foreach ($statusCategories as $statusCategory)
                                 <option value="{{ $statusCategory->id }}" {{ $task->status_category_id == $statusCategory->id ? 'selected' : '' }}>
                                     {{ $statusCategory->status_name }}
                                 </option>
                             @endforeach
                         </select>
-                    </form>
-
-                    <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}/tasks/{{ $task->task_id }}/notes" method="POST">
-                        @csrf
                         <div>
                             メモ
-                            <textarea name="note_content" required></textarea>
-                            <button type="submit">save</button>
+                            <textarea name="note" value="{{ $task->note }}"></textarea>
+                            <button type="submit">save and update</button>
                         </div>
                     </form>
 
