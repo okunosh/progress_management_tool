@@ -11,7 +11,7 @@ class Long_term_goals_Controller extends Controller
 {
     public function index()
     {
-        $long_term_goals = LongTermGoals::all();
+        $long_term_goals = LongTermGoals::where('user_id', Auth::id())->get();;
         return view('goals.index')->with([
             'long_term_goals' => $long_term_goals
         ]);
