@@ -18,7 +18,7 @@ return new class extends Migration
             }
             if (!Schema::hasColumn('tasks', 'status_category_id')) {
                 $table->foreignId('status_category_id')
-                      ->constrained('status_categories')
+                      ->constrained('task_status_categories')
                       ->default(1);
             }
         });
