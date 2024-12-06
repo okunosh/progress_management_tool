@@ -4,7 +4,7 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="user_name" :value="__('Name')" />
+            <x-input-label for="user_name" :value="__('ユーザー名')" />
             <x-text-input id="user_name" class="block mt-1 w-full" type="text" name="user_name" :value="old('user_name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('user_name')" class="mt-2" />
         </div>
@@ -41,16 +41,16 @@
         
 
         <div class="mt-4">
-            <label for="age">Age</label>
+            <label for="age">年齢</label>
             <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" required min="0" max="100"/>
 
         </div>
 
         <div class="mt-4">
-            <label for="visibility_setting">Visibility Setting</label>
+            <label for="visibility_setting">公開設定</label>
             <select id="visibility_setting" class="block mt-1 w-full" type="visibility_setting" name="visibility_setting" required>
-                <option value="1" {{ old('visibility_setting') == 1 ? 'selected' : '' }}>Visible</option>
-                <option value="0" {{ old('visibility_setting') == 0 ? 'selected' : '' }}>Hidden</option>
+                <option value="1" {{ old('visibility_setting') == 1 ? 'selected' : '' }}>公開</option>
+                <option value="0" {{ old('visibility_setting') == 0 ? 'selected' : '' }}>非公開</option>
             </select>
         </div>
 

@@ -1,31 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
-        Top Page
+        長期目標を設定
     </x-slot>
     <div>
         <form action="/goal/create" method="POST">
             @csrf
             <div>
-                name
+                目標名
                 <input type="text" name="goal[goal_name]"></input>
             </div>
 
             <div>
-                Description
+                説明
                 <textarea name="goal[goal_description]"></textarea>
             </div>
 
             <div>
-                startdate
+                開始日
                 <input type="date" name="goal[start_date]"></input>
             </div>
             
             <div>
-                enddate
+                終了日
                 <input type="date" name="goal[end_date]"></input>
             </div>
 
-            <input type="submit" value="store"></input>
+            <input type="submit" value="設定する"></input>
         </form>
 
     </div>

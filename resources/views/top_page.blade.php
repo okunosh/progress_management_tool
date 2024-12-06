@@ -12,10 +12,10 @@
             Create Task
         </x-slot>
 
-        <h2>you are : {{ Auth::user()->user_name }}</h2>
+        <h2>{{ Auth::user()->user_name }}</h2>
         <article>
             <div class="content">
-                <h3>Your Goals</h3>
+                <h3>あなたの目標</h3>
                 <div>
                     <p>--------------</p>
                     @foreach ($lgoals as $lgoal)
@@ -40,7 +40,7 @@
                             <p>短期目標：{{$task['short_term_goal_name']}}</p>
                             <p>タスク：{{ $task['task_name'] }}</p>
                             <p>投稿者：{{ $task['user_name'] }}</p>
-                            <p>time: {{ $task['updated_at'] }}</p>
+                            <p>投稿時刻: {{ $task['updated_at'] }}</p>
                             
                             <p>--------------</p>
                         </div>
@@ -49,7 +49,7 @@
 
             </div> 
             <div class="subcontent">
-                <h3>To Do List</h3>
+                <h3>To Do</h3>
                 <!-- To Do Listの内容 -->
             </div>
         </article>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Short Term Goal Detail
+        タスク一覧
     </x-slot>
 
     <body>
@@ -21,7 +21,6 @@
             <p>start:{{ $short_term_goal->planned_start_date }}</p>
             <p>end:{{ $short_term_goal->planned_end_date }}</p>
             <p>-------------------------------------------</p>
-            <p>タスク一覧</p>
             <!-- finished tasks一覧へのリンク -->
              <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a>
             <p>-------------------------------------------</p>

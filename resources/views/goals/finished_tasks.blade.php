@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        Finished tasks
+    終了タスク一覧
     </x-slot>
 
     <body>
         <div>
         <p>-------------------------------------------</p>
-        <p>finished task一覧</p>
+        <p></p>
         <p>-------------------------------------------</p>
 
         @foreach ($finished_tasks as $finished_task)
