@@ -13,7 +13,7 @@
         </x-slot>
         <article>
             <div class="content">
-                <h3>あなたの目標</h3>
+                <div class='hd'>あなたの目標</div>
                 <div>
                     @foreach ($lgoals as $lgoal)
                         <div class="goals">
@@ -26,7 +26,7 @@
 
             <div class="sides">
                 <!-- サイドコンテンツ -->
-                 <h1>最近の投稿</h1>
+                 <div class="hd">最近の投稿</div>
                  <div>
                     @foreach ($tasks as $task)
                         <div class="goals">
@@ -40,9 +40,9 @@
                  </div>
 
             </div> 
-            <div class="subcontent">
+            <!-- <div class="subcontent">
                 <h3>To Do</h3>
-                <!-- To Do Listの内容 -->
+                To Do Listの内容 -->
             </div>
         </article>
     </x-app-layout>

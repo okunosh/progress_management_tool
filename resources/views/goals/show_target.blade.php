@@ -14,22 +14,22 @@
             <div class='goals'>
                 <div class='short_goals'>{{ $short_term_goal->short_term_goal_name}}</div>
                 <p>{{ $short_term_goal->short_term_goal_description }}</p>
-                <p>start:{{ $short_term_goal->planned_start_date }}</p>
-                <p>end:{{ $short_term_goal->planned_end_date }}</p>
+                <p>開始:{{ $short_term_goal->planned_start_date }}</p>
+                <p>終了予定:{{ $short_term_goal->planned_end_date }}</p>
             </div>
 
             <div class="hd">タスク一覧</h1>
+                   <!-- finished tasks一覧へのリンク -->
+                   <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
             <!--task作成画面へのリンク-->
-            <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">create task</a>
+            <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">タスクを作成</a>
 
-            <!-- finished tasks一覧へのリンク -->
-            <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
+     
 
 
             @foreach ($tasks as $task)
                 <div class="goals">
                     <div class="tasks">{{ $task->task_name }}</div>
-                    <p>ID:{{ $task->task_id }}</p>
                     <p>{{ $task->task_description }}</p>
                     <p>予定日：{{ $task->planned_date}}</p>
                     <p>進捗状況：</p>

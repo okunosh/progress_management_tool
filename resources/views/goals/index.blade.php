@@ -9,7 +9,7 @@
                 <h2 class="long_goals">{{ $long_term_goal->goal_name }}</h2>
                 <p>{{ $long_term_goal->goal_description }}</p>
                 <p>進捗度：</p>
-                <a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標</a>
+                <a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧</a>
             </div>
         @endforeach
     </div>
