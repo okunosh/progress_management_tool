@@ -35,7 +35,7 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-right: 0;
+  right: 0;
 }
 nav ul {
 display: flex;
@@ -60,6 +60,7 @@ body {
   font-family:'Noto Sans JP',sans-serif;
   background-color:#f6f5f4;
   box-sizing: border-box;
+  width: 100%;
 }
 
 article {
@@ -76,6 +77,9 @@ article {
   grid-row: 1 / 2;
   background-color: #e9ecef;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .side {
   grid-column: 2 / 3;

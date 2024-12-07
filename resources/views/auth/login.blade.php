@@ -32,9 +32,8 @@
             </label>
         </div>
         
-        <div>
-            <a href="register">ユーザー登録</a>
-
+        <div
+            <a class='button' href="register">ユーザー登録</a>
 
         </div>
         <div class="flex items-center justify-end mt-4">

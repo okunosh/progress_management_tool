@@ -1,0 +1,77 @@
+:root {
+    --button-color-default: black;
+    --button-color-long-goal: blue;
+    --button-color-short-goal: red;
+    --button-color-task: #4CAF50;
+    --goal-border-color: hsl(0, 0%, 3%);
+    --long-goal-color: #0476e8;
+    --short-goal-color: crimson;
+    --task-color: green;
+  }
+  
+  .goals {
+    border: 1px solid var(--goal-border-color);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .long_goals {
+    color: var(--long-goal-color);
+    font-size: 2.3em;
+  }
+  
+  .short_goals {
+    color: var(--short-goal-color);
+    font-size: 1.8em;
+  }
+  
+  .tasks {
+    color: var(--task-color);
+    font-size: 1.3em;
+  }
+  
+  .button {
+    background-color: var(--button-color-default);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .button:hover {
+    filter: brightness(85%);
+  }
+  
+  .long_goal_button {
+    background-color: var(--button-color-long-goal);
+  }
+  
+  .long_goal_button:hover {
+    background-color: var(--button-color-long-goal);
+  }
+  
+  .short_goal_button {
+    background-color: var(--button-color-short-goal);
+  }
+  
+  .short_goal_button:hover {
+    background-color: var(--button-color-short-goal);
+  }
+  
+  .task_button {
+    background-color: var(--button-color-task);
+  }
+  
+  .task_button:hover {
+    background-color: var(--button-color-task);
+  }
+
+  .hd{
+    font-size: 1.2em;
+  }
