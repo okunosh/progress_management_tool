@@ -9,21 +9,18 @@
 <body>
     <x-app-layout>
         <x-slot name="header">
-            Create Task
+            <h2>you are : {{ Auth::user()->user_name }}</h2>
         </x-slot>
 
-        <h2>you are : {{ Auth::user()->user_name }}</h2>
+        
         <article>
             <div class="content">
                 <h3>Your Goals</h3>
                 <div>
-                    <p>--------------</p>
                     @foreach ($lgoals as $lgoal)
                         <div class="goals">
                             <h2 class="long_goals">{{ $lgoal->goal_name }}</h2>
                             <p>{{ $lgoal->goal_description }}</p>
-                            <p>進捗度：</p>
-                            <p>--------------</p>
                         </div>
                     @endforeach
                 </div>
@@ -33,25 +30,22 @@
                 <!-- サイドコンテンツ -->
                  <h1>最近の投稿</h1>
                  <div>
-                 <p>--------------</p>
                     @foreach ($tasks as $task)
-                        <div class="tasks">
+                        <div class="goals">
                             <h2 class="tasks"></h2>
                             <p>短期目標：{{$task['short_term_goal_name']}}</p>
                             <p>タスク：{{ $task['task_name'] }}</p>
                             <p>投稿者：{{ $task['user_name'] }}</p>
                             <p>time: {{ $task['updated_at'] }}</p>
-                            
-                            <p>--------------</p>
                         </div>
                     @endforeach
                  </div>
 
             </div> 
-            <div class="subcontent">
+            <!-- <div class="subcontent">
                 <h3>To Do List</h3>
-                <!-- To Do Listの内容 -->
-            </div>
+                <-- To Do Listの内容 -->
+            </div>        
         </article>
     </x-app-layout>
 </body>

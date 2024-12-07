@@ -11,26 +11,24 @@
             </div>
         @endif
         <div>
-            <!--task作成画面へのリンク-->
-            <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">create task</a>
-        </div>
+            <div class='goals'>
+                <div class='short_goals'>{{ $short_term_goal->short_term_goal_name}}</div>
+                <p>{{ $short_term_goal->short_term_goal_description }}</p>
+                <p>start:{{ $short_term_goal->planned_start_date }}</p>
+                <p>end:{{ $short_term_goal->planned_end_date }}</p>
+            </div>
 
-        
-            <h1>{{ $short_term_goal->short_term_goal_name}}</h1>
-            <p>{{ $short_term_goal->short_term_goal_description }}</p>
-            <p>start:{{ $short_term_goal->planned_start_date }}</p>
-            <p>end:{{ $short_term_goal->planned_end_date }}</p>
-            <p>-------------------------------------------</p>
-            <p>タスク一覧</p>
+            <div class="hd">タスク一覧</h1>
+            <!--task作成画面へのリンク-->
+            <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">create task</a>
+            
             <!-- finished tasks一覧へのリンク -->
-             <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a>
-            <p>-------------------------------------------</p>
+            <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
 
 
             @foreach ($tasks as $task)
-                <div class="tasks">
-                
-                    <h2 class="task">{{ $task->task_name }}</h2>
+                <div class="goals">
+                    <div class="tasks">{{ $task->task_name }}</div>
                     <p>ID:{{ $task->task_id }}</p>
                     <p>{{ $task->task_description }}</p>
                     <p>予定日：{{ $task->planned_date}}</p>
@@ -57,7 +55,7 @@
                         <div>
                             メモ
                             <textarea name="note" value="{{ $task->note }}"></textarea>
-                            <button type="submit">save and update</button>
+                            <button type="submit" class='button'>save and update</button>
                         </div>
                     </form>
 
@@ -65,9 +63,9 @@
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="task_id" value="{{ $task->task_id }}">
-                        <button type="button" onclick="deleteTask({{ $task->task_id }})">delete</button> 
+                        <button type="button" class='button' onclick="deleteTask({{ $task->task_id }})">delete</button> 
                     </form>
-                    <p>--------------------</p>
+
 
                 </div>
             @endforeach

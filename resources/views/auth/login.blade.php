@@ -33,9 +33,7 @@
         </div>
         
         <div>
-            <a href="register">register</a>
-
-
+            <a class='button' href="register">register</a>
         </div>
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
