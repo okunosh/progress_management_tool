@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        Long Term Goals Detail
+       短期目標一覧
     </x-slot>
 
     <body>
-        <div>
-            
+        <div
+            <a href="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal">短期目標を設定</a>
 
         </div>
 
@@ -23,7 +23,7 @@
         <div class="goals">
             <h2 class="short_goals">{{ $short_goal->short_term_goal_name }}</h2>
             <p>{{ $short_goal->short_term_goal_description }}</p>
-            <a class='button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_goal->short_term_goal_id }}">detail</a>
+            <a class='button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_goal->short_term_goal_id }}">タスク一覧</a>
             </div>
     @endforeach
     </body>
