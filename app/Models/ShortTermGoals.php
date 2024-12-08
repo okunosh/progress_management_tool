@@ -43,7 +43,7 @@ class ShortTermGoals extends Model
         return $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
     }
 
-    public static function calculateOverallProgressRate(){
+    public static function calculateShortTermProgressRate(){
         $shortTermGoals = self::with('task')->get();
         
         $completedShortTermGoals = $shortTermGoals->filter(function($goal) {
