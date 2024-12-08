@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2>you are : {{ Auth::user()->user_name }}</h2>
+        <div class="hd">ようこそ{{ Auth::user()->user_name }}さん！</div>
     </x-slot>
     <style>
         .container {

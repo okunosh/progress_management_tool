@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        タスクを設定
+        <div class="hd">タスクを作成</div>
     </x-slot>
     <!-- resources/views/goals.create_task.blade.php -->
      <div class="container">

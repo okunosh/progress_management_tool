@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-    終了タスク一覧
+        <div class="hd">終了タスク一覧</div>
     </x-slot>
 
     <body>
         <div class="container">
-            <p>finished task一覧</p>
             @foreach ($finished_tasks as $finished_task)
-                <h2 class="goals">{{ $finished_task->task_name }}
+                <h2 class="goals">
+                    <div class="tasks">{{ $finished_task->task_name }}</div>
                     <p>{{ $finished_task->task_description }}</p>
-                    <p>date: {{ $finished_task->planned_date}}</p>
+                    <p>更新日: {{ $finished_task->planned_date}}</p>
                     <p><ノート></p>
                     @if(is_null($finished_task->note) || $finished_task->note === '')
                     <p>ノートはありません。</p>

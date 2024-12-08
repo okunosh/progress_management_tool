@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        タスク一覧
+        <div class="hd">タスク一覧</div>
     </x-slot>
 
     <body>
@@ -19,9 +19,8 @@
                     <p>終了予定:{{ $short_term_goal->planned_end_date }}</p>
                 </div>
 
-                <div class="hd">タスク一覧</h1>
-                    <!-- finished tasks一覧へのリンク -->
-                    <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
+                <!-- finished tasks一覧へのリンク -->
+                <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
                 <!--task作成画面へのリンク-->
                 <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">タスクを作成</a>
 
