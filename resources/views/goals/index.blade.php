@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        長期目標一覧
+        <div class="hd">長期目標一覧</div>
     </x-slot>
-    <div>
+    <div class="container">
         <a class='button long_goal_button' href='/goal/create'>長期目標を設定する</a>
         @foreach ($long_term_goals as $long_term_goal)
             <div class="goals">

@@ -2,7 +2,7 @@
     <x-slot name="header">
         長期目標を設定
     </x-slot>
-    <div>
+    <div class="container">
         <form action="/goal/create" method="POST">
             @csrf
             <div>
@@ -25,7 +25,7 @@
                 <input type="date" name="goal[end_date]"></input>
             </div>
 
-            <input type="submit" value="設定する"></input>
+            <input class="button" type="submit" value="設定する"></input>
         </form>
 
     </div>

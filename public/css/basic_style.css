@@ -75,3 +75,7 @@
   .hd{
     font-size: 1.2em;
   }
+  .container {
+    width: 80%; /* ページの幅を30%に設定 */
+    margin: 0 auto; /* 左右のマージンを自動にして中央に配置 */
+}
