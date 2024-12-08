@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        短期目標を設定
+        <div class="hd">短期目標を設定</div>  
     </x-slot>
     <div class="container">
         <form action="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal" method="POST">

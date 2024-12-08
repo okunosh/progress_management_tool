@@ -35,4 +35,23 @@ class ShortTermGoals extends Model
     {
         return $this->hasMany(Task::class, 'short_term_goal_id', 'short_term_goal_id');
     }
+
+    public function getProgressRateAttribute(){
+        $totalTasks = $this->task()->count();
+        $completedTasks = $this->task()->where('status_category_id', 3)->count();
+
+        return $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
+    }
+
+    public static function calculateOverallProgressRate(){
+        $shortTermGoals = self::with('task')->get();
+        
+        $completedShortTermGoals = $shortTermGoals->filter(function($goal) {
+            return $goal->task->where('status_category_id', 'completed')->count() == $goal->task->count();
+        })->count();
+
+        $totalShortTermGoals = $shortTermGoals->count();
+        return $totalShortTermGoals > 0 ? ($completedShortTermGoals / $totalShortTermGoals) * 100 : 0;
+    }
+
 }

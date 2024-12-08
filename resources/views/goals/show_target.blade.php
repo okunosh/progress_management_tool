@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        タスク一覧
+        <div class="hd">タスク一覧</div>
     </x-slot>
 
     <body>
@@ -17,11 +17,42 @@
                     <p>{{ $short_term_goal->short_term_goal_description }}</p>
                     <p>開始:{{ $short_term_goal->planned_start_date }}</p>
                     <p>終了予定:{{ $short_term_goal->planned_end_date }}</p>
+                    <p>進捗率：{{ number_format($short_term_goal->progress_rate, 2) }}%</p>
+                     <!-- Progress Chart -->
+                    <canvas id="progressChart{{ $short_term_goal->short_term_goal_id }}" width="800" height="50"></canvas>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script>
+                        var ctx{{ $short_term_goal->short_term_goal_id }} = document.getElementById('progressChart{{ $short_term_goal->short_term_goal_id }}').getContext('2d');
+                        var progressChart{{ $short_term_goal->short_term_goal_id }} = new Chart(ctx{{ $short_term_goal->short_term_goal_id }}, {
+                            type: 'bar',
+                            data: {
+                                labels: ['進捗率'],
+                                datasets: [{
+                                    label: '{{ $short_term_goal->short_term_goal_name }}',
+                                    data: [{{ number_format($short_term_goal->progress_rate, 2) }}],
+                                    backgroundColor: 'red'
+                                }]
+                            },
+                            options: {
+                                indexAxis: 'y', 
+                                scales: {
+                                    x: {
+                                        beginAtZero: true,
+                                        max: 100 
+                                    }       
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false 
+                                    }
+                                }
+                            }
+                        });
+                    </script>    
                 </div>
 
-                <div class="hd">タスク一覧</h1>
-                    <!-- finished tasks一覧へのリンク -->
-                    <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
+                <!-- finished tasks一覧へのリンク -->
+                <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
                 <!--task作成画面へのリンク-->
                 <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">タスクを作成</a>
 
