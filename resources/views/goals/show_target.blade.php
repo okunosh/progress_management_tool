@@ -18,6 +18,8 @@
                     <p>開始:{{ $short_term_goal->planned_start_date }}</p>
                     <p>終了予定:{{ $short_term_goal->planned_end_date }}</p>
                     <p>進捗率：{{ number_format($short_term_goal->progress_rate, 2) }}%</p>
+                    <!-- <p>progress_status{{$short_term_goal->progress_status}}</p> -->
+
                      <!-- Progress Chart -->
                     <canvas id="progressChart{{ $short_term_goal->short_term_goal_id }}" width="800" height="50"></canvas>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

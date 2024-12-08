@@ -8,7 +8,7 @@
             <div class="goals">
                 <h2 class="long_goals">{{ $long_term_goal->goal_name }}</h2>
                 <p>{{ $long_term_goal->goal_description }}</p>
-                <p>進捗度：</p>
+                <p>進捗率: {{ number_format($long_term_goal->progress_rate, 2) }}%</p>
                 <a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧</a>
             </div>
         @endforeach

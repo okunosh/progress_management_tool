@@ -58,7 +58,10 @@ Route::controller(TaskController::class)->middleware(['auth'])->group(function()
     Route::delete('/goal/{long_term_goal}/{short_term_goal}', 'delete');
 });
 
-Route::get('/progress', [ProgressRateController::class, 'index']);
+Route::controller(ProgressRateController::class)->middleware(['auth'])->group(function(){
+    Route::get('/progress, [ProgressRateController', 'index');
+    Route::get('/progresses, [ProgressRateController', 'overallProgress');
+});
 
 Route::middleware('auth')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile_show');

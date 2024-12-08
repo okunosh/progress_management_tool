@@ -10,6 +10,7 @@
                 <p>{{ $long_term_goal->goal_description }}</p>  
                 <p>開始:{{ $long_term_goal->start_date }}</p>
                 <p>終了予定:{{ $long_term_goal->end_date }}</p>
+                <p>進捗率: {{ number_format($long_term_goal->progress_rate, 2) }}%</p>
             </div>
             <a class='button short_goal_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal">短期目標を設定</a>
                 

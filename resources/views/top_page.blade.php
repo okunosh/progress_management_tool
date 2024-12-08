@@ -26,6 +26,7 @@
                         <div class="goals">
                             <div class="long_goals"><a href="/goal/{{ $lgoal->long_term_goal_id }}">{{ $lgoal->goal_name }}</a></div>
                             <p>{{ $lgoal->goal_description }}</p>
+                            <p>進捗率: {{ number_format($lgoal->progress_rate, 2) }}%</p>
                             <a class="button" href="/goal/{{ $lgoal->long_term_goal_id }}">詳細</a>
                         </div>
                     @endforeach
