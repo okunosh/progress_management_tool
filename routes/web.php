@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Long_term_goals_Controller;
 use App\Http\Controllers\Short_term_goals_Controller;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProgressRateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +47,7 @@ Route::controller(Long_term_goals_Controller::class)->middleware(['auth'])->grou
 Route::controller(Short_term_goals_Controller::class)->middleware(['auth'])->group(function(){
     Route::get('/goal/{long_term_goal}/create_short_term_goal', 'create');
     Route::post('/goal/{long_term_goal}/create_short_term_goal', 'store');
-    Route::get('/goal/{long_term_goal}/{short_term_goal}', 'show');   
+    Route::get('/goal/{long_term_goal}/{short_term_goal}', 'show');
 });
 
 Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
@@ -55,6 +57,8 @@ Route::controller(TaskController::class)->middleware(['auth'])->group(function()
     Route::patch('/goal/{long_term_goal}/{short_term_goal}', 'updateStatus')->name('tasks.updateStatus');
     Route::delete('/goal/{long_term_goal}/{short_term_goal}', 'delete');
 });
+
+Route::get('/progress', [ProgressRateController::class, 'index']);
 
 Route::middleware('auth')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile_show');

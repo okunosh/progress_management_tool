@@ -4,16 +4,16 @@
     </x-slot>
     <style>
         .container {
-            display: flex; /* フレックスボックスを使用 */
-            width: 80%; /* ページの幅を80%に設定 */
-            margin: 0 auto; /* 左右のマージンを自動にして中央に配置 */
+            display: flex; 
+            width: 80%; 
+            margin: 0 auto; 
         }
         .main-content {
-            flex: 3; /* メインコンテンツの幅を設定 */
-            margin-right: 20px; /* サイドコンテンツとの間にスペースを追加 */
+            flex: 3; 
+            margin-right: 20px; 
         }
         .side-content {
-            flex: 1; /* サイドコンテンツの幅を設定 */
+            flex: 1; 
         }
     </style>
     <body>
