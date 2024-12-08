@@ -2,7 +2,7 @@
     <x-slot name="header">
         短期目標を設定
     </x-slot>
-    <div>
+    <div class="container">
         <form action="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal" method="POST">
             @csrf
             <div>
@@ -26,7 +26,7 @@
                 <input type="date" name="short_goal[planned_end_date]"></input>
             </div>
 
-            <input type="submit" value="store"></input>
+            <input type="submit" class="button" value="設定する"></input>
         </form>
 
     </div>

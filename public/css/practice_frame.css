@@ -5,7 +5,7 @@ header {
   width: 100%;
   padding: 15px 0;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 header .headline{
   text-align: left;
@@ -13,54 +13,6 @@ header .headline{
 }
 header .navigation{
   color: rgb(1, 12, 8);
-}
-nav{
-  position:absolute;
-  top: 50px;
-  left:0;
-  width:100%;
-}
-/*
-nav ul{
-  font-size: 1.2rem;
-  display: flex;
-}
-nav li{
-  text-align: center;
-  padding:10px 0;
-  color: brown;
-}
-*/
-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-nav ul {
-display: flex;
-background: rgba(255,255,255,.7);
-margin: 0;
-list-style: none;
-padding: 0;
-font-size: 1.2rem;
-}
-nav li {
-text-align: center;
-padding: 10px 0;
-width: 180px;
-cursor: pointer;
-transition: all 1s;
-}
-nav li:hover {
-background: white;
-}
-
-body {
-  font-family:'Noto Sans JP',sans-serif;
-  background-color:#f6f5f4;
-  box-sizing: border-box;
-  width: 100%;
 }
 
 article {
@@ -77,9 +29,6 @@ article {
   grid-row: 1 / 2;
   background-color: #e9ecef;
   padding: 20px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 .side {
   grid-column: 2 / 3;
