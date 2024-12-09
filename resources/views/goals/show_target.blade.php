@@ -52,9 +52,11 @@
                         });
                     </script>    
                 </div>
-
+                <!--短期目標一覧へのリンク-->
+                <a class='button back_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧に戻る</a>
                 <!-- finished tasks一覧へのリンク -->
                 <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
+               
                 <!--task作成画面へのリンク-->
                 <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">タスクを作成</a>
 

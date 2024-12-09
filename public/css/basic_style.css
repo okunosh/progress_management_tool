@@ -67,6 +67,10 @@
   .task_button {
     background-color: var(--button-color-task);
   }
+
+  .back_button{
+    float: right;
+  }
   
   .task_button:hover {
     background-color: var(--button-color-task);

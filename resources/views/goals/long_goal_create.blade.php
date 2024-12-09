@@ -3,6 +3,8 @@
         <div class="hd">長期目標を設定</div>
     </x-slot>
     <div class="container">
+        <a class="button" href="/goal/">長期目標一覧に戻る</a>
+
         <form action="/goal/create" method="POST">
             @csrf
             <div>

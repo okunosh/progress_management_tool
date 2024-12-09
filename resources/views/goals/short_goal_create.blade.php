@@ -3,6 +3,8 @@
         <div class="hd">短期目標を設定</div>  
     </x-slot>
     <div class="container">
+        <!--短期目標一覧へのリンク-->
+        <a class='button' href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧に戻る</a>
         <form action="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal" method="POST">
             @csrf
             <div>

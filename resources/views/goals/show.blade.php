@@ -18,6 +18,7 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script src="{{ asset('js/overallProgressRateChart.js') }}"></script>
             <a class='button short_goal_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/create_short_term_goal">短期目標を設定</a>
+            <a class="button back_button" href="/goal/">長期目標一覧に戻る</a>
                 
             @foreach ($short_term_goal as $short_goal)
             <div class="goals">
