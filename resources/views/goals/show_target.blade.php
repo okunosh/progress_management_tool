@@ -52,9 +52,11 @@
                         });
                     </script>    
                 </div>
-
+                <!--短期目標一覧へのリンク-->
+                <a class='button back_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧に戻る</a>
                 <!-- finished tasks一覧へのリンク -->
                 <p><a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/finished">終了したタスク</a></p>
+               
                 <!--task作成画面へのリンク-->
                 <a class='button task_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}/{{ $short_term_goal->short_term_goal_id }}/create_task">タスクを作成</a>
 
@@ -63,8 +65,9 @@
                         <div class="tasks">{{ $task->task_name }}</div>
                         <p>{{ $task->task_description }}</p>
                         <p>予定日：{{ $task->planned_date}}</p>
-                        <p>進捗状況：</p>
-                        <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" method="POST">
+                        <div class="inline-elements">
+                            <p>進捗状況：</p>
+                            <form clas="inline-form" action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" method="POST">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" name="short_term_goal_id" value="{{ $short_term_goal->short_term_goal_id }}">
@@ -83,21 +86,20 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                        
                             <div>
-                                メモ
+                                <p>メモ</p>
                                 <textarea name="note" value="{{ $task->note }}"></textarea>
-                                <button type="submit" class='button'>save and update</button>
+                                <p><button type="submit" class='button'>更新</button></p>
                             </div>
                         </form>
-
-                        <form action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" id="form_{{ $task->task_id }}" method="post">
+                        <form class="inline-form" action="/goal/{{$long_term_goal->long_term_goal_id}}/{{$short_term_goal->short_term_goal_id}}" id="form_{{ $task->task_id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="task_id" value="{{ $task->task_id }}">
-                            <button type="button" class='button' onclick="deleteTask({{ $task->task_id }})">delete</button> 
+                            <button type="button" onclick="deleteTask({{ $task->task_id }})">削除する</button> 
                         </form>
-
-
                     </div>
                 @endforeach
 
