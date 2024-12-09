@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShortTermGoals;
+use App\Models\LongTermGoals;
 
 class ProgressRateController extends Controller
 {
@@ -13,9 +14,15 @@ class ProgressRateController extends Controller
         $shortTermGoals = ShortTermGoals::with('task')->get();
 
         // 全体の進捗率を計算
-        $overallProgressRate = ShortTermGoals::calculateOverallProgressRate();
-        dd($overallProgressRate);
+        $shortTermProgressRate = ShortTermGoals::calculateShortTermProgressRate();
 
-        return view('goal.show', compact('shortTermGoals', 'overallProgressRate'))->with('goal.show_target', compact('shortTermGoals', 'overallProgressRate'));
+        return view('goal.show', compact('shortTermGoals', 'shortTermProgressRate'))->with('goal.show_target', compact('shortTermGoals', 'shortTermProgressRate'));
+    }
+
+    public function overallProgress()
+    {
+        $longTermGoals = LongTermGoals::with('shortTermGoals')->get();
+        $overallProgressRate = LongTermGoals::calculateOverallProgressRate();
+        return view('goal.index', compact('longTermGoals', 'overallProgressRate'))->with('top_page', compact('longTermGoals', 'overallProgressRate'));
     }
 }
