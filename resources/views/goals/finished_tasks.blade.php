@@ -10,9 +10,9 @@
                     <div class="tasks">{{ $finished_task->task_name }}</div>
                     <p>{{ $finished_task->task_description }}</p>
                     <p>更新日: {{ $finished_task->planned_date}}</p>
-                    <p><ノート></p>
+                    <p class="hd"><メモ></p>
                     @if(is_null($finished_task->note) || $finished_task->note === '')
-                    <p>ノートはありません。</p>
+                    <p>メモはありません。</p>
                     @else
                         <ul>
                             <li>{{ $finished_task->note }}</li> <!-- note_content を表示 -->
