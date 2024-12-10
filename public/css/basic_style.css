@@ -13,6 +13,7 @@
     border: 1px solid var(--goal-border-color);
     padding: 10px;
     margin-bottom: 10px;
+    /* height: 220px; */
   }
   
   .long_goals {

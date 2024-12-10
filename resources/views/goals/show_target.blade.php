@@ -21,7 +21,7 @@
                     <!-- <p>progress_status{{$short_term_goal->progress_status}}</p> -->
 
                      <!-- Progress Chart -->
-                    <canvas id="progressChart{{ $short_term_goal->short_term_goal_id }}" data-goal-id="{{ $short_term_goal->short_term_goal_id }}" data-progress-rate="{{ number_format($short_term_goal->progress_rate, 2) }}" data-goal-name="{{ $short_term_goal->goal_name }}" data-goal-type="short" width="100" height="8"></canvas>
+                    <canvas id="progressChart{{ $short_term_goal->short_term_goal_id }}" data-goal-id="{{ $short_term_goal->short_term_goal_id }}" data-progress-rate="{{ number_format($short_term_goal->progress_rate, 2) }}" data-goal-name="{{ $short_term_goal->goal_name }}" data-goal-type="short"></canvas>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     <script src="{{ asset('js/ProgressRateChart.js') }}"></script>
                 </div>

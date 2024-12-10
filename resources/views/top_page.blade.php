@@ -33,7 +33,7 @@
                             <p>{{ $lgoal->goal_description }}</p>
                             <p>進捗率: {{ number_format($lgoal->progress_rate, 2) }}%</p>
                             <a class="button" href="/goal/{{ $lgoal->long_term_goal_id }}">詳細</a>
-                            <canvas id="progressChart{{ $lgoal->long_term_goal_id }}" data-goal-id="{{ $lgoal->long_term_goal_id }}" data-progress-rate="{{ number_format($lgoal->progress_rate, 2) }}" data-goal-name="{{ $lgoal->goal_name }}" data-goal-type="long" width="100" height="8"></canvas>
+                            <canvas id="progressChart{{ $lgoal->long_term_goal_id }}" data-goal-id="{{ $lgoal->long_term_goal_id }}" data-progress-rate="{{ number_format($lgoal->progress_rate, 2) }}" data-goal-name="{{ $lgoal->goal_name }}" data-goal-type="long"></canvas>
                         </div>
                     @endforeach
                 </div>
