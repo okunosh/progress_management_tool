@@ -12,12 +12,12 @@
                     <p>進捗率: {{ number_format($long_term_goal->progress_rate, 2) }}%</p>
                     <a class="button" href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧</a>
                     <!--Progress Bar-->
-                    <canvas id="progressChart{{ $long_term_goal->long_term_goal_id }}" data-goal-id="{{ $long_term_goal->long_term_goal_id }}" data-progress-rate="{{ number_format($long_term_goal->progress_rate, 2) }}" data-goal-name="{{ $long_term_goal->goal_name }}" width="100" height="8"></canvas>
+                    <canvas id="progressChart{{ $long_term_goal->long_term_goal_id }}" data-goal-id="{{ $long_term_goal->long_term_goal_id }}" data-progress-rate="{{ number_format($long_term_goal->progress_rate, 2) }}" data-goal-name="{{ $long_term_goal->goal_name }}" data-goal-type="long" width="100" height="8"></canvas>
                 </div>
             @endforeach
         </div>
         <!-- Progress Chart -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="{{ asset('js/overallProgressRateChart.js') }}"></script>
+        <script src="{{ asset('js/ProgressRateChart.js') }}"></script>
     </div>
 </x-app-layout>

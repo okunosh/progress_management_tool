@@ -21,36 +21,9 @@
                     <!-- <p>progress_status{{$short_term_goal->progress_status}}</p> -->
 
                      <!-- Progress Chart -->
-                    <canvas id="progressChart{{ $short_term_goal->short_term_goal_id }}" width="800" height="50"></canvas>
+                    <canvas id="progressChart{{ $short_term_goal->short_term_goal_id }}" data-goal-id="{{ $short_term_goal->short_term_goal_id }}" data-progress-rate="{{ number_format($short_term_goal->progress_rate, 2) }}" data-goal-name="{{ $short_term_goal->goal_name }}" data-goal-type="short" width="100" height="8"></canvas>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-                        var ctx{{ $short_term_goal->short_term_goal_id }} = document.getElementById('progressChart{{ $short_term_goal->short_term_goal_id }}').getContext('2d');
-                        var progressChart{{ $short_term_goal->short_term_goal_id }} = new Chart(ctx{{ $short_term_goal->short_term_goal_id }}, {
-                            type: 'bar',
-                            data: {
-                                labels: ['進捗率'],
-                                datasets: [{
-                                    label: '{{ $short_term_goal->short_term_goal_name }}',
-                                    data: [{{ number_format($short_term_goal->progress_rate, 2) }}],
-                                    backgroundColor: 'red'
-                                }]
-                            },
-                            options: {
-                                indexAxis: 'y', 
-                                scales: {
-                                    x: {
-                                        beginAtZero: true,
-                                        max: 100 
-                                    }       
-                                },
-                                plugins: {
-                                    legend: {
-                                        display: false 
-                                    }
-                                }
-                            }
-                        });
-                    </script>    
+                    <script src="{{ asset('js/ProgressRateChart.js') }}"></script>
                 </div>
                 <!--短期目標一覧へのリンク-->
                 <a class='button back_button' href="/goal/{{ $long_term_goal->long_term_goal_id }}">短期目標一覧に戻る</a>
