@@ -11,6 +11,7 @@
   
   .goals {
     border: 1px solid var(--goal-border-color);
+    background-color: #fff;
     padding: 10px;
     margin-bottom: 10px;
   }
